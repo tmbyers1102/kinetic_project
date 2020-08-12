@@ -1,0 +1,67 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<h2 class="mb-3">Session Details for: <font color="#f40000">Session {{ object.id }}</font></h2>
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <b>user id:</b> <a class="mr-2" href="{% url 'uid-sessions' object.uid %}">{{ object.uid }}</a>
+          <b>campaign id:</b> <a class="mr-2" href="{% url 'cid-sessions' object.cid %}">{{ object.cid }}</a>
+          <small class="text-muted">   |    Session Date: {{ object.session_date }}</small>
+        </div>
+          <p><b>question id:</b> <a class="article-content" href="{% url 'qid-sessions' object.qid %}">{{ object.qid }}</a></p>
+          <p><b>Answer id:</b> <a class="article-content" href="#">{{ object.aid }}</a></p>
+          <p><b>Combined Response:</b> <a class="article-content" href="#">{{ object.qid_plus_aid }}</a></p>
+      </div>
+    </article>
+<br>
+    <div class="card">
+        <div class="col-sm-12">
+            <h4>Directions:</h4>
+            <h6><kbd>Session Timestamp</kbd> click to see details on that session</h6>
+            <h6><kbd>sid:</kbd> same path as session timestamp</h6>
+            <h6><kbd>uid:</kbd> click to see all sessions from this specific user</h6>
+            <h6><kbd>cid:</kbd> What would you want to see if clicked?</h6>
+            <h6><kbd>qid:</kbd> What would you want to see if clicked?</h6>
+
+
+        </div>
+
+    </div>
+
+{% endblock content %}
+
+
+
+
+
+<!--
+
+    {% for session in sessions %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">session user holder</a>
+              <small class="text-muted">   |    Session Date: {{ session.session_date }}</small>
+            </div>
+            <p><a class="article-title" href="#">{{ session.uid }}</a></p>
+              <p class="article-content">{{ session.eid }}</p>
+              <p class="article-content">{{ session.qid }}</p>
+          </div>
+        </article>
+    {% endfor %}
+
+<br>
+    {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+-->

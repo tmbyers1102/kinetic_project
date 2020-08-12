@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<form action="/other/" method="POST" id="systemForm">
+    {% csrf_token %}
+    <div class="btn-group-vertical w-75">
+        <button type="submit" name="system" value="system1" form="systemForm" class="btn btn-primary">Button 1</button>
+        <button type="submit" name="system" value="system 2" form="systemForm" class="btn btn-primary">Button 2</button>
+        <button type="submit" name="timing" value="timing 2" form="systemForm" class="btn btn-primary">Button 3</button>
+
+    </div>
+    <h1>list of outputs:</h1>
+    <ul>system: {{ system }}</ul>
+    <ul>timing: {{ grange }}</ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</form>
+{% endblock content %}

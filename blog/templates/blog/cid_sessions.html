@@ -1,0 +1,86 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<h2 class="mb-3">Sessions for Campaign: <font color="#f40000">{{ view.kwargs.cid }}</font></h2>
+    <div class="card">
+      <table class="table table-hover table-sm">
+        <thead class="thead-light">
+          <tr>
+            <th>Session Timestamp</th>
+            <th>sid</th>
+            <th>uid</th>
+            <th>cid</th>
+            <th>qid</th>
+            <th>aid</th>
+          </tr>
+        </thead>
+
+        {% for session in sessions %}
+            <tbody>
+              <tr>
+                <td>
+                    <a href="{% url 'session-detail' session.id %}">
+                    {{ session.session_date }}
+                    </a>
+                </td>
+                <td><a href="{% url 'session-detail' session.id %}">{{ session.id }}</a></td>
+                <td><a href="{% url 'uid-sessions' session.uid %}">{{ session.uid }}</a></td>
+                <td><a href="{% url 'cid-sessions' session.cid %}">{{ session.cid }}</a></td>
+                <td><a href="{% url 'qid-sessions' session.qid %}">{{ session.qid }}</a></td>
+                <td><a href="{% url 'aid-sessions' session.aid %}">{{ session.aid }}</a></td>
+              </tr>
+            </tbody>
+        {% endfor %}
+      </table>
+    </div>
+<br>
+    <div class="card">
+        <div class="col-sm-12">
+            <h4>Directions:</h4>
+            <h6><kbd>Session Timestamp</kbd> click to see details on that session</h6>
+            <h6><kbd>sid:</kbd> same path as session timestamp</h6>
+            <h6><kbd>uid:</kbd> click to see all sessions from this specific user</h6>
+            <h6><kbd>cid:</kbd> What would you want to see if clicked?</h6>
+            <h6><kbd>qid:</kbd> What would you want to see if clicked?</h6>
+
+
+        </div>
+
+    </div>
+
+{% endblock content %}
+
+
+
+
+
+<!--
+
+    {% for session in sessions %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">session user holder</a>
+              <small class="text-muted">   |    Session Date: {{ session.session_date }}</small>
+            </div>
+            <p><a class="article-title" href="#">{{ session.uid }}</a></p>
+              <p class="article-content">{{ session.eid }}</p>
+              <p class="article-content">{{ session.qid }}</p>
+          </div>
+        </article>
+    {% endfor %}
+
+<br>
+    {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+-->
