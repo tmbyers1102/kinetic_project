@@ -29,3 +29,5 @@ class Session(models.Model):
 
     def get_absolute_url(self):
         return reverse('session-detail', kwargs={'pk': self.pk})
+
+# test add to update file
